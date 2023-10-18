@@ -44,7 +44,7 @@ def get_block(size):
     path = join("assets", "Terrain", "Terrain.png")
     image = pygame.image.load(path).convert_alpha()
     surface = pygame.Surface((size, size), pygame.SRCALPHA, 32)
-    rect = pygame.Rect(96, 0, size, size)
+    rect = pygame.Rect(200, 0, size, size)
     surface.blit(image, (0,0), rect)
     return pygame.transform.scale2x(surface)
 
@@ -283,7 +283,9 @@ def main(window):
     fire.on()
     floor = [Block(i*block_size, HEIGHT - block_size, block_size) for i in range(-WIDTH // block_size, (WIDTH * 2) // block_size)]
 
-    objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size), Block(block_size * 3, HEIGHT - block_size * 4, block_size),Block(block_size * 4, HEIGHT - block_size * 5, block_size), fire]
+    objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size), Block(block_size * 3, HEIGHT - block_size * 4, block_size),Block(block_size * 4, HEIGHT - block_size * 5, block_size), 
+               Block(block_size * 5, HEIGHT - block_size * 6, block_size),Block(block_size * 6, HEIGHT - block_size * 6, block_size), Block(block_size * 5, HEIGHT - block_size * 6, block_size),Block(block_size * 6, HEIGHT - block_size * 6, block_size), Block(block_size * 7, HEIGHT - block_size * 6, block_size),
+                 Block(block_size * 9, HEIGHT - block_size * 6, block_size),Block(block_size * 11, HEIGHT - block_size * 6, block_size),  fire]
     
     offset_x  = 0
     scroll_area_width = 200
