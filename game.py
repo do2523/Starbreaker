@@ -44,7 +44,7 @@ def get_block(size):
     path = join("assets", "Terrain", "Terrain.png")
     image = pygame.image.load(path).convert_alpha()
     surface = pygame.Surface((size, size), pygame.SRCALPHA, 32)
-    rect = pygame.Rect(200, 0, size, size)
+    rect = pygame.Rect(210, 80, size, size)
     surface.blit(image, (0,0), rect)
     return pygame.transform.scale2x(surface)
 
@@ -52,7 +52,7 @@ class Player(pygame.sprite.Sprite):
     COLOR = (255, 0, 0)
     GRAVITY = 1
     SPRITES = load_sprite_sheets("MainCharacters", "MaskDude", 32, 32, True)
-    ANIMATION_DELAY = 3
+    ANIMATION_DELAY = 2
 
     def __init__(self, x, y, width, height):
         super().__init__()
@@ -274,18 +274,35 @@ def handle_move(player, objects):
     
 def main(window):
     clock = pygame.time.Clock()
-    background, bg_image = get_background("green.png")
+    background, bg_image = get_background("nexus.png")
 
     block_size = 96
 
     player = Player(100,100,50,50)
     fire = Fire(100, HEIGHT - block_size -64, 16, 32)
+    fire2 = Fire(300, HEIGHT - block_size -64, 16, 32)
+    fire3 = Fire(400, HEIGHT - block_size -64, 16, 32)
+    fire4 = Fire(500, HEIGHT - block_size -64, 16, 32)
+    fire5 = Fire(600, HEIGHT - block_size -64, 16, 32)
+    fire6 = Fire(700, HEIGHT - block_size -64, 16, 32)
+    fire7 = Fire(800, HEIGHT - block_size -64, 16, 32)
+    fire8 = Fire(900, HEIGHT - block_size -64, 16, 32)
+
     fire.on()
+    fire2.on()
+    fire3.on()
+    fire4.on()
+    fire5.on()
+    fire6.on()
+    fire7.on()
+    fire8.on()
+
+
     floor = [Block(i*block_size, HEIGHT - block_size, block_size) for i in range(-WIDTH // block_size, (WIDTH * 2) // block_size)]
 
     objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size), Block(block_size * 3, HEIGHT - block_size * 4, block_size),Block(block_size * 4, HEIGHT - block_size * 5, block_size), 
                Block(block_size * 5, HEIGHT - block_size * 6, block_size),Block(block_size * 6, HEIGHT - block_size * 6, block_size), Block(block_size * 5, HEIGHT - block_size * 6, block_size),Block(block_size * 6, HEIGHT - block_size * 6, block_size), Block(block_size * 7, HEIGHT - block_size * 6, block_size),
-                 Block(block_size * 9, HEIGHT - block_size * 6, block_size),Block(block_size * 11, HEIGHT - block_size * 6, block_size),  fire]
+                 Block(block_size * 9, HEIGHT - block_size * 6, block_size),Block(block_size * 11, HEIGHT - block_size * 6, block_size),fire,fire2,fire3,fire4,fire5,fire6,fire7,fire8]
     
     offset_x  = 0
     scroll_area_width = 200
